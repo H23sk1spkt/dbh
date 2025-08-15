@@ -8,7 +8,19 @@ async function send(url, method) {
   }
   const content = res.headers.get("content-type");
   const isJson = content && content.includes("application/json");
-  return isJson ? res.json() : res.text();
+  //CÁCH 1
+  // const result = isJson ? res.json() : res.text();
+  // return console.log(result);
+  //NHƯ NÀY NÓ CHỈ ĐANG LÀ 1 PROMISE THÔI NHÉ , SAU KHI XUỐNG DƯỚI VÀO THEN NÓ MỚI LÀ RESOLVE HOẶC REJECT
+  //CÁCH 2
+  // const result = isJson ?  await res.json() :  await res.text();
+  // return result;
+  //NẾU CÓ LÔĨ
+  try {
+    const result = isJson ? await res.json() : await res.text();
+  } catch (error) {
+    throw new Error("invalide JSON format");
+  }
 }
 const head = document.querySelector(".header");
 send("./partials/header.html")
