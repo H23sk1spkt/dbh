@@ -18,10 +18,12 @@ async function send(url, method) {
   //NẾU CÓ LÔĨ
   try {
     const result = isJson ? await res.json() : await res.text();
+    return result;
   } catch (error) {
     throw new Error("invalide JSON format");
   }
 }
+//Promise resolve reject -> then catch finaaly chạy bất đồng bộ
 const head = document.querySelector(".header");
 send("./partials/header.html")
   .then((responseText) => {
@@ -30,24 +32,21 @@ send("./partials/header.html")
   .catch((error) => {
     console.log(error);
   });
-// function firstProvince() {
-//   return sendRequest(
-//     "GET",
-//     "https://api01.f8team.dev/api/address/provinces"
-//   ).then((result) => result.data[0]);
-// }
-// function firstDistrict(firstProvince) {
-//   return sendRequest(
-//     "GET",
-//     `https://api01.f8team.dev/api/address/districts?province_id=${firstProvince}`
-//   ).then((result) => result.data[0]);
-// }
-// function firstWard(firstDistrict) {
-//   return sendRequest(
-//     "GET",
-//     `https://api01.f8team.dev/api/address/wards?district_id=${firstDistrict}`
-//   ).then((result) => result.data[0]);
-// }
+function firstProvince() {
+  return send("https://api01.f8team.dev/api/address/provinces").then(
+    (result) => result.data[0]
+  );
+}
+function firstDistrict(firstProvince) {
+  return send(
+    `https://api01.f8team.dev/api/address/districts?province_id=${firstProvince}`
+  ).then((result) => result.data[0]);
+}
+function firstWard(firstDistrict) {
+  return send(
+    `https://api01.f8team.dev/api/address/wards?district_id=${firstDistrict}`
+  ).then((result) => result.data[0]);
+}
 // firstProvince()
 //   .then((firstProvince) => firstDistrict(firstProvince.province_id))
 //   .then((firstDistrict) => firstWard(firstDistrict.district_id))
