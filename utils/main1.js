@@ -1,4 +1,5 @@
 // gọi ra từ index.js đê gọn ko phải gọi nhiều file
+// đây là import tĩnh
 import { calculation } from './index.js';
 const pi=3.14;
 const array=[];
@@ -8,6 +9,5 @@ const MyMath={
     array,
     object
 }
-console.log(calculation)
 export {pi,array,object};
 export default MyMath
