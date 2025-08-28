@@ -36,22 +36,33 @@
 // gau.increase();
 // console.log(gau.value);
 // Dùng với get và set
-class Nini{
-    constructor(name){
-        this._name=name
-    }
-    get name(){
-        return this._name.trim();
-    }
-    set name(value){
-        if(typeof value!=="string"){
-            throw new Error("Name bạn truyền vào không phải 1 string");
+// class Nini{
+//     constructor(name){
+//         this._name=name
+//     }
+//     get name(){
+//         return this._name.trim();
+//     }
+//     set name(value){
+//         if(typeof value!=="string"){
+//             throw new Error("Name bạn truyền vào không phải 1 string");
             
-        }
-        this._name=value
+//         }
+//         this._name=value
+//     }
+// }
+// const gau=new Nini("      HẢI        ")
+// console.log(gau.name);
+// gau.name="      VY";
+// console.log(gau.name)
+class goro{
+    //Phân biệt phương thức tĩnh và phương thức thường
+    //phương thức tĩnh thì dùng thẳng trục tiếp từ đối tượng GORO
+    static increase=function(){
+
+    }
+    //Còn phương thức thường thì tạo đối tượng mới rồi gọi lại hàm (vs gau)
+    increase(){
+
     }
 }
-const gau=new Nini("      HẢI        ")
-console.log(gau.name);
-gau.name="      VY";
-console.log(gau.name)
