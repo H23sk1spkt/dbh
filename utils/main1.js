@@ -1,3 +1,4 @@
+// gọi ra từ index.js đê gọn ko phải gọi nhiều file
 import { calculation } from './index.js';
 const pi=3.14;
 const array=[];
