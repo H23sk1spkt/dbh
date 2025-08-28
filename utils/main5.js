@@ -23,15 +23,35 @@
 // gau.increase();
 // console.log(gau.value)
 //ĐÂY LÀ CÁCH VIẾT NẾU MUỐN TRUYỀN GIÁ TRỊ VÀO
-class Minamoto{
-    constructor(init){
-        this.value=init
+// class Minamoto{
+//     constructor(init){
+//         this.value=init
+//     }
+//     increase(){
+//         this.value++
+//     }
+// }
+// const gau=new Minamoto(100)
+// console.log(gau.value);
+// gau.increase();
+// console.log(gau.value);
+// Dùng với get và set
+class Nini{
+    constructor(name){
+        this._name=name
     }
-    increase(){
-        this.value++
+    get name(){
+        return this._name.trim();
+    }
+    set name(value){
+        if(typeof value!=="string"){
+            throw new Error("Name bạn truyền vào không phải 1 string");
+            
+        }
+        this._name=value
     }
 }
-const gau=new Minamoto(100)
-console.log(gau.value);
-gau.increase();
-console.log(gau.value);
+const gau=new Nini("      HẢI        ")
+console.log(gau.name);
+gau.name="      VY";
+console.log(gau.name)
